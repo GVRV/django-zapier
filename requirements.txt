@@ -1,1 +1,8 @@
-reqs/prod.txt
+-r reqs/_base.txt
+
+dj-database-url==0.3.0
+dj-static==0.0.5
+django-toolbelt==0.0.1
+gunicorn==18.0
+pystache==0.5.3
+static==1.0.2
