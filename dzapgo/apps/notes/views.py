@@ -1,3 +1,11 @@
+
 from django.shortcuts import render
 
-# Create your views here.
+from .models import Note
+
+
+def homepage(request):
+    note = Note.objects.first() 
+    return render(request, 'homepage.html', {
+        'note': note
+        })

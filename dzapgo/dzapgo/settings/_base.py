@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+PROJ_DIR = os.path.abspath(os.path.join(BASE_DIR, '../'))
 
 
 # Quick-start development settings - unsuitable for production
@@ -36,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'notes',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -50,17 +52,6 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'dzapgo.urls'
 
 WSGI_APPLICATION = 'dzapgo.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -80,3 +71,24 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+TEMPLATE_DIRS = (
+    os.path.abspath(os.path.join(PROJ_DIR, 'templates')),
+    )
+
+# STATICFILES_DIRS = (
+#     os.path.abspath(os.path.join(PROJ_DIR, 'static')),
+#     )
+
+# Database/PostgreSQL settings
+
+DATABASES = {
+    'default': {
+        'ENGINE':'django.db.backends.postgresql_psycopg2',
+        'NAME': 'zapier',
+        'USER': 'zapier',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
+    }
+}
