@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_hooks',
     'notes',
 )
 
@@ -94,3 +95,13 @@ DATABASES = {
         'PORT': '',
     }
 }
+
+# Webhooks 
+HOOK_EVENTS = {
+    'note.updated': 'notes.Note.updated',
+    'note.viewed': None
+}
+HOOK_DELIVERER = 'notes.tasks.deliver_hook_wrapper'
+
+# Celery broker 
+BROKER_URL = 'redis://localhost:6379'
