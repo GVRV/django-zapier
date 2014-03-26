@@ -10,8 +10,8 @@ def homepage(request):
     note = Note.objects.first() 
     hook_event.send(
             sender=note.__class__,
-            event_name='note.viewed',
-            obj=note
+            action='note.viewed',
+            instance=note
         )
     return render(request, 'homepage.html', {
         'note': note
