@@ -2,6 +2,7 @@
 from datetime import datetime
 
 from django.db import models
+from rest_hooks.models import Hook
 
 
 class Note(models.Model):
@@ -14,3 +15,9 @@ class Note(models.Model):
 
     def save(self, **kwargs):
         return super(Note, self).save()
+
+
+# Monkey patching Hooks to always be associated 
+# with User pk=1 cause we want it to be free-for-all
+# This is bad, mkayyy
+Hook._meta.fields[3].default = 1
