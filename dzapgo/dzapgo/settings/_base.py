@@ -96,12 +96,12 @@ DATABASES = {
     }
 }
 
-# Webhooks 
+# Webhooks
 HOOK_EVENTS = {
-    'note.updated': 'notes.Note.updated',
+    'note.updated': 'notes.Note.updated+',
     'note.viewed': None
 }
 HOOK_DELIVERER = 'notes.tasks.deliver_hook_wrapper'
 
-# Celery broker 
+# Celery broker
 BROKER_URL = 'redis://localhost:6379'
