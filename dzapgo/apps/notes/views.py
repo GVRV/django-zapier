@@ -7,7 +7,7 @@ from .models import Note
 
 
 def homepage(request):
-    note = Note.objects.first() 
+    note = Note.objects.first()
     hook_event.send(
             sender=note.__class__,
             action='note.viewed',

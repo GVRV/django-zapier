@@ -1,4 +1,6 @@
 
+from django.core.serializers.json import DjangoJSONEncoder
+
 from dzapgo import celery_app
 
 import requests
@@ -14,7 +16,7 @@ def deliver_hook(target, payload, instance=None, hook=None, **kwargs):
     """
     requests.post(
         url=target,
-        data=json.dumps(payload),
+        data=json.dumps(payload, cls=DjangoJSONEncoder),
         headers={'Content-Type': 'application/json'}
     )
 
